@@ -2,11 +2,15 @@ using System;
 
 namespace RefactoringGuru.DesignPatterns.Adapter.Conceptual
 {
+    // The Target defines the domain-specific interface used by the client code.
     public interface ITarget
     {
         string GetRequest();
     }
 
+    // The Adaptee contains some useful behavior, but its interface is
+    // incompatible with the existing client code. The Adaptee needs some
+    // adaptation before the client code can use it.
     class Adaptee
     {
         public string GetSpecificRequest()
@@ -15,6 +19,8 @@ namespace RefactoringGuru.DesignPatterns.Adapter.Conceptual
         }
     }
 
+    // The Adapter makes the Adaptee's interface compatible with the Target's
+    // interface.
     class Adapter : ITarget
     {
         private readonly Adaptee _adaptee;
